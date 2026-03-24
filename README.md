@@ -39,12 +39,12 @@ wildfire-impact-assessment/
 
 | Color | Severity | Impact Range |
 |-------|----------|--------------|
-| 🟢 Light Green | Very Low | 0.00 – 0.20 |
-| 🟡 Light Yellow | Low | 0.20 – 0.40 |
-| 🟠 Light Orange | Moderate | 0.40 – 0.60 |
-| 🔴 Red-Orange | High | 0.60 – 0.80 |
-| 🔴 Dark Red | Severe | 0.80 – 1.00 |
-| ⬜ White | Outside Fire Zone | - |
+| Light Green | Very Low | 0.00 – 0.20 |
+| Light Yellow | Low | 0.20 – 0.40 |
+| Light Orange | Moderate | 0.40 – 0.60 |
+| Red-Orange | High | 0.60 – 0.80 |
+| Dark Red | Severe | 0.80 – 1.00 |
+| White | Outside Fire Zone | - |
 
 ## Usage
 
