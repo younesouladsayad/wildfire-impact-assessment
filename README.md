@@ -3,21 +3,6 @@
 ## Overview
 This repository contains satellite data, shapefile, and processed impact rasters used to assess the impacts of the 2013 wildfires in Quebec, Canada, on climate, air quality, and human health over the period 2013–2020.
 
-## Repository Structure
-
-
-wildfire-impact-assessment/
-├── README.md                    # This file
-├── shapefile/                   # Fire zone shapefile (2013 wildfires)
-├── satellite_data/              # Raw satellite images (MODIS, Sentinel-5P, ERA5)
-│   ├── ERA5_Climate/            # ERA5 reanalysis data (temperature, wind, radiation)
-│   ├── MODIS_FireMask/          # MODIS fire detection data
-│   ├── MODIS_LST/               # MODIS land surface temperature
-│   ├── NDVI/                    # MODIS vegetation index
-│   └── S5P_CO/                  # Sentinel-5P carbon monoxide (2018-2020)
-└── impact_rasters/              # Processed impact index rasters (2013-2020)
-
-
 ## Data Description
 
 ### Shapefile
