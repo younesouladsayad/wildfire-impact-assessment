@@ -1,31 +1,73 @@
 # Wildfire Impact Assessment on Climate, Air Quality, and Human Health
 
 ## Overview
-This repository contains satellite data, shapefile, and processed impact rasters used to assess the impacts of the 2013 wildfires in Quebec, Canada, on climate, air quality, and human health over the period 2013–2020.
+Processed data for assessing the 2013 wildfires in Canada, on climate, air quality, and human health over the period 2013–2020.
+
+## Repository Structure
+
+```
+wildfire-impact-assessment/
+├── README.md
+├── shapefile/                    # Fire zone shapefile (2013 wildfires)
+├── impact_rasters/               # Grayscale impact index rasters (2013-2020)
+├── images colored maps/          # Colored classified maps with legend
+└── colored maps/                 # Additional colored map outputs
+```
 
 ## Data Description
 
-### Shapefile
+### shapefile/
 - `feux_contours_2013.shp` - Fire perimeters of the 2013 wildfires in Quebec, Canada
 - **Source**: Canadian National Fire Database
 
-### Satellite Data
+### impact_rasters/
+- Grayscale impact index rasters (0-1 scale, higher = greater impact)
+- Files: `impact_2013.tif` to `impact_2020.tif`, `final_impact.tif`
+- Resolution: 1 km
+- Projection: WGS 84 / UTM zone 19N (EPSG:32619)
 
-| Folder | Sensor | Variable | Period | Resolution |
-|--------|--------|----------|--------|------------|
-| NDVI | MODIS MOD13Q1 | Vegetation Index | 2013-2020 | 250 m |
-| MODIS_LST | MODIS MOD11A1 | Land Surface Temperature | 2013-2020 | 1 km |
-| MODIS_FireMask | MODIS MOD14A1 | Fire Detection (0-5) | 2013-2020 | 1 km |
-| ERA5_Climate | ERA5 | Temperature, Wind, Radiation | 2013-2020 | 0.25° |
-| S5P_CO | Sentinel-5P | Carbon Monoxide | 2018-2020 | 7 km |
+### images colored maps/
+- Colored classified maps with 5 severity levels
+- GeoTIFF files are georeferenced
+- PNG files include legend
 
-### Impact Rasters
-- `impact_YYYY.tif` - Annual impact index for each year (2013-2020)
-- `final_impact.tif` - Average impact for 2019-2020
-- **Resolution**: 1 km (aligned to MODIS LST grid)
-- **Projection**: WGS 84 / UTM zone 19N (EPSG:32619)
+### colored maps/
+- Additional colored map outputs
+- Georeferenced TIFF and PNG formats
+
+## Color Legend
+
+| Color | Severity | Impact Range |
+|-------|----------|--------------|
+| 🟢 Light Green | Very Low | 0.00 – 0.20 |
+| 🟡 Light Yellow | Low | 0.20 – 0.40 |
+| 🟠 Light Orange | Moderate | 0.40 – 0.60 |
+| 🔴 Red-Orange | High | 0.60 – 0.80 |
+| 🔴 Dark Red | Severe | 0.80 – 1.00 |
+| ⬜ White | Outside Fire Zone | - |
+
+## Usage
+
+### Open in QGIS
+1. Add raster layer: `Layer > Add Layer > Add Raster Layer`
+2. Select any `.tif` file
+3. Add shapefile: `Layer > Add Layer > Add Vector Layer` → select `shapefile/feux_contours_2013.shp`
+
+### Load in Python
+```python
+import rasterio
+import geopandas as gpd
+
+# Load impact raster
+with rasterio.open('impact_rasters/impact_2020.tif') as src:
+    data = src.read(1)
+
+# Load shapefile
+gdf = gpd.read_file('shapefile/feux_contours_2013.shp')
+```
 
 ## Contact
 
-For questions about this dataset, please contact: y.ouladsayad@uiz.ac.ma
+For questions: y.ouladsayad@uiz.ac.ma
 ```
+
